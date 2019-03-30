@@ -3,3 +3,4 @@ Pliki projektu mini portalu filmowego na potrzeby ćwiczeń PHP + MySQL dla Loka
 
 * Czytanie danych z MySQl za pomocą klasy mysqli.
 * tworzenie pętli w PHP
+* i inne rzeczy
