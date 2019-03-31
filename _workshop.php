@@ -20,6 +20,7 @@ $path = 'logs/';
         <button id="getLogPhp" class="btn btn-sm btn-info">Show log via PHP</button>
         <button id="getHtml" class="btn btn-sm btn-primary">Get HTML code</button>
         <button id="getJson" class="btn btn-sm btn-danger">Get JSON</button>
+        <button id="getPlainJson" class="btn btn-sm btn-danger">Get plain JSON</button>
     </p>
     <div class="row">
         <div class="col-sm-6">
@@ -85,11 +86,27 @@ $path = 'logs/';
         })
     });
 
+    $('#getPlainJson').click(function() {
+        $.ajax({
+            method: 'get',
+            url: 'data/1.json',
+            dataType: 'json',
+            success: function(response) {
+                $('#log').html('<h2>pobranych rekordów: ' + response.length + '</h2>');
+                $(response).each(function( index, element ) {
+                    $('#log').append('<h3>'+element.title+' (' + element.year + ')</h3>');
+                    $('#log').append('<div>'+element.description+'</div>');
+                });
+            }
+        })
+    });
+
     $('#getHtml').click(function() {
         $('#myHtml').html('');
         $.ajax({
             method: 'get',
             url: 'data/1.html',
+            dataType: 'text',
             success: function(response) {
                 //alert(response);
                 $('#myHtml').html(response);
