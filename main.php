@@ -1,4 +1,23 @@
 <?php
+// zapis wizyty do logów
+$filename = date('Ymd').'.txt';
+$path = 'logs'.DIRECTORY_SEPARATOR;
+
+/*if (!file_exists($path.$filename)) {
+    $file = fopen($path.$filename, 'w');
+    fclose($file);
+}*/
+$mtime = explode('.', microtime()); // rozbijanie stringów pod kątem innego stringa
+$mtime = substr($mtime[1], 2, 4);
+
+$file = fopen($path.$filename, 'a');
+fwrite($file, date('H:i:s').'.'.$mtime.' '.$_SERVER['REMOTE_ADDR']."\n");
+fclose($file);
+
+
+
+// wizyta w ciastku
+setcookie('entry_php', 1, time()+3600);
 
 $db = new mysqli('localhost', 'root', '', 'lokalny');
 $db->set_charset('utf8');
@@ -56,7 +75,6 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 </head>
 <body>
 
-
 <header>
     <div class="collapse bg-dark" id="navbarHeader">
         <div class="container">
@@ -94,6 +112,15 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         <div class="container">
             <h1 class="jumbotron-heading">My Favourite Movies Album</h1>
             <p class="lead text-muted">All made for your purpose :)</p>
+            <p class="lead text-muted">
+                <?php
+                    if (isset($_COOKIE['entry_javascript'])) {
+                        echo 'Welcome again dear user ;)';
+                    } else {
+                        echo 'Welcome stranger :)';
+                    }
+                ?>
+            </p>
         </div>
     </section>
 
@@ -231,25 +258,31 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 </main>
 
-
 <footer class="text-muted">
     <div class="container">
         <p class="float-right">
             <a href="#">Back to top</a>
         </p>
         <p>Movies album made in &copy; Bootstrap, using PHP & MySQL, created for <strong>LokalnyProgramista.pl</strong>!</p>
+
     </div>
 </footer>
 
 
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js" ></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
-
-
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css" />
 <script src="https://cdn.jsdelivr.net/gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@2/src/js.cookie.min.js"></script>
+<script>
+    Cookies.set('entry_javascript', 'ok');
+
+
+</script>
 
 </body>
 </html>
