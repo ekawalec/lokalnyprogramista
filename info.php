@@ -59,9 +59,13 @@ if (strlen($pesel) != 11) {
     }
     echo '3. suma cyfr numeru pesel: '.$pesel.' to: '.$suma .'<br>';
 
-
-    
 }
 
 
+?>
+
+<form method="post">
+    <input type="text" name="variable" >
+    <input type="submit" value="dalej" >
+</form>
 
