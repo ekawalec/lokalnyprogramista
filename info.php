@@ -71,7 +71,7 @@ if (strlen($pesel) != 11) {
 Zadanie 3:
 Odbierz wartość z pola input ($_POST['variable']).
 - Jeśli będzie to tekst krótszy niż 10 znaków - wyświetl taki komunikat.
-- W przeciwnym wypadku zamień go na duże litery i wyświetl.
+- W przeciwnym wypadku zamień go na duże litery (strtoupper) i wyświetl.
 
 
 </pre>
@@ -80,3 +80,10 @@ Odbierz wartość z pola input ($_POST['variable']).
     <input type="submit" value="dalej" >
 </form>
 
+<?php
+
+
+
+
+
+?>
