@@ -59,6 +59,8 @@ if (strlen($pesel) != 11) {
     }
     echo '3. suma cyfr numeru pesel: '.$pesel.' to: '.$suma .'<br>';
 
+
+    
 }
 
 
