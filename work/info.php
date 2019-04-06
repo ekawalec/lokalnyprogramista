@@ -100,6 +100,7 @@ if (isset($_POST['variable'])) {
                 $suma = $suma + ord($text[$i]);
                 $text[$i] = strtoupper($text[$i]);
             }
+
         }
         echo 'co drugi znak z dużej litery: '. $text;
         echo '<br>';

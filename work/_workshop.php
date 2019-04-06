@@ -1,6 +1,6 @@
 <?php
 $filename = date('Ymd').'.txt';
-$path = 'logs/';
+$path = '../logs/';
 
 ?>
 <!DOCTYPE html>
@@ -74,7 +74,7 @@ $path = 'logs/';
     $('#getJson').click(function() {
         $.ajax({
             method: 'get',
-            url: '_ajax.php',
+            url: '../_ajax.php',
             dataType: 'json',
             success: function(response) {
                 $('#log').html('<h2>pobranych rekordów: ' + response.length + '</h2>');
@@ -89,7 +89,7 @@ $path = 'logs/';
     $('#getPlainJson').click(function() {
         $.ajax({
             method: 'get',
-            url: 'data/1.json',
+            url: './/data/1.json',
             dataType: 'json',
             success: function(response) {
                 $('#log').html('<h2>pobranych rekordów: ' + response.length + '</h2>');
@@ -105,7 +105,7 @@ $path = 'logs/';
         $('#myHtml').html('');
         $.ajax({
             method: 'get',
-            url: 'data/1.html',
+            url: '../data/1.html',
             dataType: 'text',
             success: function(response) {
                 //alert(response);
@@ -117,7 +117,7 @@ $path = 'logs/';
     $(document).ready(function () {
         $.ajax({
             method: 'get',
-            url: 'data/1.html',
+            url: '../data/1.html',
             success: function(response) {
                 //alert(response);
                 $('#myHtml').html(response);
