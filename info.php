@@ -72,6 +72,7 @@ Zadanie 3:
 Odbierz wartość z pola input ($_POST['variable']).
 - Jeśli będzie to tekst krótszy niż 10 znaków - wyświetl taki komunikat.
 - W przeciwnym wypadku zamień go na duże litery (strtoupper) i wyświetl.
+- Wyświetl co 2-gi znak z dużej litery
 
 
 </pre>
