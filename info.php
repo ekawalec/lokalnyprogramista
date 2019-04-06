@@ -73,18 +73,44 @@ Odbierz wartość z pola input ($_POST['variable']).
 - Jeśli będzie to tekst krótszy niż 10 znaków - wyświetl taki komunikat.
 - W przeciwnym wypadku zamień go na duże litery (strtoupper) i wyświetl.
 - Wyświetl co 2-gi znak z dużej litery
-
-
+- zsumuj wartość kodów ASCII dużych liter z poprzedniego punktu **
+- zakoduj tekst kodami ASCII w sposób: [KOD]
 </pre>
+
 <form method="post">
     <input type="text" name="variable" >
     <input type="submit" value="dalej" >
 </form>
 
 <?php
+if (isset($_POST['variable'])) {
+
+    $text = $_POST['variable'];
+    if (strlen($text) < 10) {
+        echo "podany tekst jest krótszy niż 10 znaków";
+    }
+    else {
+        echo strtoupper($text);
+        echo '<br>';
+        $suma = 0;
+        $kod = null;
+        for ($i=0, $max=strlen($text); $i < $max; $i++) {
+            $kod .= '['.ord($text[$i]).']';
+            if ($i % 2 == 0 ) {
+                $suma = $suma + ord($text[$i]);
+                $text[$i] = strtoupper($text[$i]);
+            }
+        }
+        echo 'co drugi znak z dużej litery: '. $text;
+        echo '<br>';
+        echo 'suma kodów ASCII duzych liter: '.$suma;
+        echo '<br>';
+        echo 'kod ASCII w []: '.$kod;
+        echo '<br>';
 
 
+    }
 
 
-
+}
 ?>
