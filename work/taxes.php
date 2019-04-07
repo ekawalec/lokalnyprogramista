@@ -34,7 +34,7 @@ Policz cenę brutto od podanej w formularzu. Stawka VAT: 23%.
     ?>
 </p>
 
-
+<hr>
 
 <pre>
 <strong>Zadanie:</strong>
