@@ -1,4 +1,4 @@
-`<?php
+<?php
 /**
  * Created by IntelliJ IDEA.
  * User: jaszczomp
@@ -12,7 +12,7 @@
 // git clone https://github.com/swiftmailer/swiftmailer.git swiftmailer
 
 require 'swiftmailer/lib/swift_required.php';
-
+require "mail_cfg.php";
 
 // tu twój kod php
 
