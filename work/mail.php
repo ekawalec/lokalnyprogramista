@@ -8,10 +8,12 @@
 
 // dopinam bibliotekę SwiftMailer - pobraną z GitHub
 // https://github.com/swiftmailer/swiftmailer
-// pobieramy przez
-// git clone https://github.com/swiftmailer/swiftmailer.git swiftmailer
+// dokumentacja: https://swiftmailer.symfony.com/docs/introduction.html
+//
+// pobieramy przez composer
+// composer require "swiftmailer/swiftmailer:^6.0"
 
-require 'swiftmailer/lib/swift_required.php';
+require 'vendor/autoload.php';
 require "mail_cfg.php";
 
 
@@ -20,6 +22,30 @@ require "mail_cfg.php";
 if (isset($_POST['sendMessage'])) {
     /// tu wysyłka maila
     /// https://swiftmailer.symfony.com/docs/introduction.html
+    ///
+
+    // Create the Transport
+    $transport = (new Swift_SmtpTransport($server, $port, $encrypt))
+        ->setUsername($login)
+        ->setPassword($passwd)
+    ;
+
+    // Create the Mailer using your created Transport
+    $mailer = new Swift_Mailer($transport);
+
+    // Create a message
+    $message = (new Swift_Message($_POST['topic']))
+        ->setFrom($login)
+        ->setTo($_POST['recipient'])
+        ->setBody($_POST['message'])
+    ;
+
+    // Send the message
+    $result = $mailer->send($message);
+
+
+
+
 
 }
 
@@ -33,9 +59,9 @@ if (isset($_POST['sendMessage'])) {
 </head>
 <body>
 <form action="" method="post">
-    <input type="text" name="topic" id=""><br>
-    <input type="text" name="recipient" id=""><br>
-    <textarea name="message" id="" cols="30" rows="10"></textarea>
+    <input type="text" name="topic" id="" placeholder="temat"><br>
+    <input type="text" name="recipient" id="" placeholder="adresat"><br>
+    <textarea name="message" id="" cols="30" rows="10" placeholder="treść wiadomości"></textarea>
     <input type="submit" name="sendMessage" id="" value="Wyślij">
 </form>
 </body>
