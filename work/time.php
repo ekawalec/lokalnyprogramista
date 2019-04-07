@@ -14,9 +14,9 @@
 </head>
 <body>
 <form action="">
-    <input type="text" name="year">
-    <input type="text" name="month">
-    <input type="text" name="day">
+    <input type="text" name="year" required>
+    <input type="text" name="month" required>
+    <input type="text" name="day" required>
     <input type="submit" name="sendButton" value="DALEJ">
 </form>
 <pre>
@@ -26,7 +26,21 @@ Odbierz dane urodzin użytkownika i wskaż jaki to był dzień tygodnia.
 
 <p>
     <?php
-     // tu twój kod
+        // tu twój kod
+        // skrypt zadziałą tylko po wysłaniu formularza lub odebraniu danych z adresu
+        if (isset($_GET['sendButton']) && $_GET['sendButton']=='DALEJ') {
+
+            // buduję datę w formacie: yyyy-mm-dd - dane odebrane z formularza:
+            $date = $_GET['year'] .'-'. $_GET['month'] . '-' . $_GET['day'];
+            echo 'podano datę: '. $date;
+            echo '<BR>';
+            $date = strtotime($date);
+            echo 'data po zamianie na sek w formacie Unix timestamp: '.$date;
+            echo '<BR>';
+            echo 'dzien tygodnia odczytany z daty: '. date('l', $date);
+
+        }
+
     ?>
 
 
