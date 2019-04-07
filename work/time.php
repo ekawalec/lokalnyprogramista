@@ -28,18 +28,35 @@ Odbierz dane urodzin użytkownika i wskaż jaki to był dzień tygodnia.
     <?php
         // tu twój kod
         // skrypt zadziałą tylko po wysłaniu formularza lub odebraniu danych z adresu
-        if (isset($_GET['sendButton']) && $_GET['sendButton']=='DALEJ') {
-
-            // buduję datę w formacie: yyyy-mm-dd - dane odebrane z formularza:
-            $date = $_GET['year'] .'-'. $_GET['month'] . '-' . $_GET['day'];
-            echo 'podano datę: '. $date;
-            echo '<BR>';
-            $timestamp = strtotime($date);
-            echo 'data po zamianie na sek w formacie Unix timestamp: '.$timestamp;
-            echo '<BR>';
-            echo 'dzien tygodnia odczytany z daty: '. date('l', $timestamp);
-
+        // pełna lista warunków (nie zawiera zabezpieczenia ruchu z zewnątrz)
+        if (
+            !isset($_GET['sendButton'])
+            || $_GET['sendButton']!='DALEJ'
+            || !isset($_GET['year'])
+            || empty($_GET['month'])
+            || empty($_GET['day'])
+            || !is_numeric($_GET['year'])
+            || !is_numeric($_GET['month'])
+            || !is_numeric($_GET['day'])
+            || $_GET['month'] < 0
+            || $_GET['month'] > 12
+            || $_GET['day'] < 0
+            || $_GET['day'] > 31
+        ) {
+            return ;
         }
+
+
+        // buduję datę w formacie: yyyy-mm-dd - dane odebrane z formularza:
+        $date = $_GET['year'] .'-'. $_GET['month'] . '-' . $_GET['day'];
+        echo 'podano datę: '. $date;
+        echo '<BR>';
+        $timestamp = strtotime($date);
+        echo 'data po zamianie na sek w formacie Unix timestamp: '.$timestamp;
+        echo '<BR>';
+        echo 'dzien tygodnia odczytany z daty: '. date('l', $timestamp);
+
+
 
     ?>
 
