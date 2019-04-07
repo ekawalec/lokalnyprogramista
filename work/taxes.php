@@ -64,13 +64,15 @@ Policz cenę netto od podanej brutto w formularzu. Stawka VAT: 23%.
 <pre>
 <strong>Zadanie:</strong>
 Pobierz aktualną tabelę kursów walut z NBP.
+Przelicz podaną wartość PLN po uwzględnieniu kursu walut: USD, EUR, GBP.
 </pre>
 <form action="">
-    <input type="submit" name="getCurrency" value="Pobierz" >
+    <input type="number" step="0.01" min="0" max="1000000" placeholder="kwota w PLN" name="pln_value" required>
+    <input type="submit" name="getCurrency" value="Pobierz i przelicz" >
 </form>
 <p>
     <?php
-    if (isset($_GET['getCurrency']) && $_GET['getCurrency']=='Pobierz') {
+    if (isset($_GET['getCurrency']) && $_GET['getCurrency']=='Pobierz i przelicz') {
         $table = 'a';
         $url = 'http://api.nbp.pl/api/exchangerates/tables/'.$table;
         $data = file_get_contents($url);
@@ -82,10 +84,10 @@ Pobierz aktualną tabelę kursów walut z NBP.
         echo '<br>';
         echo 'Format JSON przekształcony na tablicę: <br>';
         $jsonTable = json_decode($data, 1);
-        echo '<h5>pełna tablica JSON</h5>';
-        echo '<pre>';
-        print_r($jsonTable);
-        echo '</pre>';
+//        echo '<h5>pełna tablica JSON:</h5>';
+//        echo '<pre>';
+//        print_r($jsonTable);
+//        echo '</pre>';
 
         // szukam interesujących mnie walut: USD, EUR i GBP
         // 1. muszę znać strukturę JSON z danymi:
@@ -93,14 +95,14 @@ Pobierz aktualną tabelę kursów walut z NBP.
         //            [no] => 068/A/NBP/2019
         //            [effectiveDate] => 2019-04-05
         //
-        echo '<h5>tablica okrojonego JSON\'a do parametru rates</h5>';
-        echo '<pre>';
-        print_r($jsonTable[0]['rates']);
-        echo '</pre>';
+//        echo '<h5>tablica okrojonego JSON\'a do parametru rates:</h5>';
+//        echo '<pre>';
+//        print_r($jsonTable[0]['rates']);
+//        echo '</pre>';
 
         // lista interesujących mnie walut:
         $wanted = [
-            'USD', 'EUR', 'GBP'
+            'USD', 'EUR', 'GBP', 'DKK'
         ];
         $result = [];
         foreach ($jsonTable[0]['rates'] as $rate) {
@@ -110,12 +112,18 @@ Pobierz aktualną tabelę kursów walut z NBP.
         }
         // teraz mogę liczyć coś uwzględniając waluty które mnie interesują
         // $result
-        echo '<h5>tablica znalezionych pasujących walut</h5>';
+        echo '<h5>tablica znalezionych pasujących walut:</h5>';
         echo '<pre>';
         print_r($result);
         echo '</pre>';
 
-
+        $pln_value = (float)$_GET['pln_value'];
+        echo '<h5>'.$pln_value.' PLN to:</h5>';
+        echo '<ul>';
+        foreach ($result as $rate) {
+            echo '<li>'.$rate['currency'].' ['.$rate['code'].']: '.number_format($pln_value / $rate['mid'], 2).'</li>';
+        }
+        echo '</ul>';
     }
     ?>
 </p>
