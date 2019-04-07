@@ -7,14 +7,14 @@
 <body>
 
 
-<form action="">
-    <input type="number" placeholder="kwota netto" name="netto" required step="0.01" min="0.01" max="1000000">
-    <button type="submit">DALEJ</button>
-</form>
 <pre>
 <strong>Zadanie:</strong>
 Policz cenę brutto od podanej w formularzu. Stawka VAT: 23%.
 </pre>
+<form action="">
+    <input type="number" placeholder="kwota netto" name="netto" required step="0.01" min="0.01" max="1000000">
+    <button type="submit">DALEJ</button>
+</form>
 <p>
     <?php
 
@@ -35,14 +35,15 @@ Policz cenę brutto od podanej w formularzu. Stawka VAT: 23%.
 </p>
 
 
-<form action="">
-    <input type="number" placeholder="kwota brutto" name="brutto" required step="0.01" min="0.01" max="1000000">
-    <button type="submit">DALEJ</button>
-</form>
+
 <pre>
 <strong>Zadanie:</strong>
 Policz cenę netto od podanej brutto w formularzu. Stawka VAT: 23%.
 </pre>
+<form action="">
+    <input type="number" placeholder="kwota brutto" name="brutto" required step="0.01" min="0.01" max="1000000">
+    <button type="submit">DALEJ</button>
+</form>
 <p>
     <?php
         // tu kod :)
