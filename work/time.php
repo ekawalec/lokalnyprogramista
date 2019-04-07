@@ -34,10 +34,10 @@ Odbierz dane urodzin użytkownika i wskaż jaki to był dzień tygodnia.
             $date = $_GET['year'] .'-'. $_GET['month'] . '-' . $_GET['day'];
             echo 'podano datę: '. $date;
             echo '<BR>';
-            $date = strtotime($date);
-            echo 'data po zamianie na sek w formacie Unix timestamp: '.$date;
+            $timestamp = strtotime($date);
+            echo 'data po zamianie na sek w formacie Unix timestamp: '.$timestamp;
             echo '<BR>';
-            echo 'dzien tygodnia odczytany z daty: '. date('l', $date);
+            echo 'dzien tygodnia odczytany z daty: '. date('l', $timestamp);
 
         }
 
