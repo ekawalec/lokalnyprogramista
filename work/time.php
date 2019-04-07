@@ -66,7 +66,7 @@ Odbierz dane urodzin użytkownika i wskaż jaki to był dzień tygodnia.
         $timestamp = strtotime($date);
         echo 'data po zamianie na sek w formacie Unix timestamp: '.$timestamp;
         echo '<BR>';
-        echo 'dzien tygodnia odczytany z daty: '. date('l', $timestamp);
+        echo 'dzien tygodnia odczytany z daty: '. date('N', $timestamp);
 
 
 
