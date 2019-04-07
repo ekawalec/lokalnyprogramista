@@ -7,7 +7,12 @@
  */
 
 // dopinam bibliotekę SwiftMailer - pobraną z GitHub
-require 'swiftmailer/swift_required.php';
+// https://github.com/swiftmailer/swiftmailer
+// pobieramy przez
+// git clone https://github.com/swiftmailer/swiftmailer.git swiftmailer
+
+require 'swiftmailer/lib/swift_required.php';
+
 
 // tu twój kod php
 
