@@ -14,9 +14,21 @@
 </head>
 <body>
 <form action="">
-    <input type="number" name="year" required placeholder="rok" step="1" >
-    <input type="number" name="month" required placeholder="miesiąc" step="1">
-    <input type="number" name="day" required placeholder="dzień" step="1">
+    <input type="number" name="year" required
+           placeholder="rok" step="1"
+           value="<?= isset($_GET['year']) ? $_GET['year'] : '' ?>"
+           min="1" max="3000"
+    >
+    <input type="number" name="month" required
+           placeholder="miesiąc" step="1"
+           value="<?= isset($_GET['month']) ? $_GET['month'] : '' ?>"
+           min="1" max="12"
+    >
+    <input type="number" name="day" required
+           placeholder="dzień" step="1"
+           value="<?= isset($_GET['day']) ? $_GET['day']:'' ?>"
+           min="1" max="31"
+    >
     <input type="submit" name="sendButton" value="DALEJ">
 </form>
 <pre>
