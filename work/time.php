@@ -14,9 +14,9 @@
 </head>
 <body>
 <form action="">
-    <input type="text" name="year" required>
-    <input type="text" name="month" required>
-    <input type="text" name="day" required>
+    <input type="number" name="year" required placeholder="rok" step="1" >
+    <input type="number" name="month" required placeholder="miesiąc" step="1">
+    <input type="number" name="day" required placeholder="dzień" step="1">
     <input type="submit" name="sendButton" value="DALEJ">
 </form>
 <pre>
