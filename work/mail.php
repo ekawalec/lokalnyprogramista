@@ -14,8 +14,14 @@
 require 'swiftmailer/lib/swift_required.php';
 require "mail_cfg.php";
 
+
 // tu twój kod php
 
+if (isset($_POST['sendMessage'])) {
+    /// tu wysyłka maila
+    /// https://swiftmailer.symfony.com/docs/introduction.html
+
+}
 
 
 ?>
@@ -26,7 +32,7 @@ require "mail_cfg.php";
     <title>PHP wysyła maile przez SMTP</title>
 </head>
 <body>
-<form action="">
+<form action="" method="post">
     <input type="text" name="topic" id=""><br>
     <input type="text" name="recipient" id=""><br>
     <textarea name="message" id="" cols="30" rows="10"></textarea>
