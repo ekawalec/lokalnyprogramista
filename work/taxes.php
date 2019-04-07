@@ -129,6 +129,15 @@ Przelicz podaną wartość PLN po uwzględnieniu kursu walut: USD, EUR, GBP.
                     echo '<li>'.$rate['currency'].' ['.$rate['code'].']: '.number_format($pln_value / $rate['mid'], 2).'</li>';
                 }
                 echo '</ul>';
+
+                // zapisuję tablicę walut do pliku w formacie CSV
+                $fp = fopen('mid_currencies.csv', 'w');
+                foreach ($result as $rate) {
+                    fputcsv($fp, array_values($rate), ';');
+                }
+                fclose($fp);
+
+
             }
             ?>
         </p>
@@ -155,14 +164,12 @@ Przelicz podaną wartość PLN po uwzględnieniu kursu walut: USD, EUR, GBP.
                         var wanted = ['USD', 'EUR', 'GBP'];
 
                         $.each(rates, function (index, element) {
-
                             if (wanted.indexOf(element.code) != -1 ) {
                                 $('#ratesResult').append('<li>' +
                                     element.currency+ ' ['+element.code+']: ' +
                                     parseFloat(pln_value/element.mid).toFixed(2) +
                                     '</li>');
                             }
-
                         })
 
                     }
