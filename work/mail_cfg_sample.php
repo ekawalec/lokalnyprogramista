@@ -24,11 +24,20 @@ $mail_config = [
 ];
 
 $recipients = [
-    '1' => '.............@gmail.com',
-    '2' => '.............@gmail.com',
-    '3' => '.............@gmail.com',
-    '4' => '.............@gmail.com',
-    '5' => '.............@gmail.com',
+    '1' => [
+        'email' => '..................',
+        'name' => 'SERWIS AA ....',
+        'description' => 'Zapytanie o usługi',
+    ],
+    '2' => [
+        'email' => '..................',
+        'name' => 'SERWIS BB ...',
+        'description' => 'Zapytanie o audyt',
+    ],
+    '3' => [
+        'email' => '..................',
+        'name' => 'support ...',
+        'description' => 'Zapytanie o serwis',
+    ],
 ];
-
 

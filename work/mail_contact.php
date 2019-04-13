@@ -25,10 +25,7 @@ if (isset($_POST['sendMessage'])) {
     ///
     ///
     /// Walidacja
-    if (strlen($_POST['topic']) < 3 && strlen($_POST['topic']) > 255) {
-        echo "BLAD: temat powinien miec dlugosc od 3-255 znakow";
-    }
-    elseif (strlen($_POST['message']) < 3 && strlen($_POST['message']) > 2500) {
+    if (strlen($_POST['message']) < 3 && strlen($_POST['message']) > 2500) {
         echo "BLAD: wiadomosc powinna miec dlugosc od 3-2500 znakow";
     }
     elseif (empty($_POST['recipient']) || !array_key_exists($_POST['recipient'], $recipients)) {
@@ -38,7 +35,7 @@ if (isset($_POST['sendMessage'])) {
 
         // pobieram sobie konfigurację do wysyłki maila z pola $_POST['account']
 
-        $cfg = $mail_config[$_POST['account']];
+        $cfg = $mail_config['gmail'];
         $recipient = $recipients[$_POST['recipient']];
 
         // Create the Transport
@@ -51,7 +48,7 @@ if (isset($_POST['sendMessage'])) {
         $mailer = new Swift_Mailer($transport);
 
         // Create a message
-        $message = (new Swift_Message($_POST['topic']))
+        $message = (new Swift_Message($recipient['description']))
             ->setFrom($cfg['login'])
             // ->setTo($_POST['recipient'])
             // podmieniam adresata na osobę z tablicy $recipients
@@ -86,20 +83,13 @@ if (isset($_POST['sendMessage'])) {
 </head>
 <body>
 <form action="" method="post">
-    wysyłka przez: <select name="account" id="">
-        <option value="gmail">gmail</option>
-        <option value="o2">o2</option>
-    </select><br>
-    <input type="text" name="topic" id="" placeholder="temat"><br>
-    <!-- <input type="email" name="recipient" id="" placeholder="adresat"><br> -->
-
-    adresat: <select name="recipient" id="">
+    wybierz temat wiadomości:<br>
+    <select name="recipient" id="">
         <?php foreach($recipients as $_key => $_recipient): ?>
-            <option value="<?= $_key ?>"><?= $_recipient['name'] ?></option>
+            <option value="<?= $_key ?>"><?= $_recipient['description'] ?></option>
         <?php endforeach; ?>
     </select>
     <br>
-
     <textarea name="message" id="" cols="30" rows="10" placeholder="treść wiadomości"></textarea>
     <br>
     <input type="submit" name="sendMessage" id="" value="Wyślij">
