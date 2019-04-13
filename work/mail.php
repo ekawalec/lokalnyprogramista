@@ -80,13 +80,14 @@ if (isset($_POST['sendMessage'])) {
 </head>
 <body>
 <form action="" method="post">
-    <select name="account" id="">
+    wysyłka przez: <select name="account" id="">
         <option value="gmail">gmail</option>
         <option value="o2">o2</option>
-    </select>
+    </select><br>
     <input type="text" name="topic" id="" placeholder="temat"><br>
     <input type="email" name="recipient" id="" placeholder="adresat"><br>
     <textarea name="message" id="" cols="30" rows="10" placeholder="treść wiadomości"></textarea>
+    <br>
     <input type="submit" name="sendMessage" id="" value="Wyślij">
 </form>
 </body>

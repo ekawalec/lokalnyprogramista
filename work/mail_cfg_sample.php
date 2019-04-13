@@ -11,14 +11,14 @@ $mail_config = [
         'server' => 'smtp.googlemail.com',
         'encrypt' => 'SSL',
         'port' => 465,
-        'login' => 'address@gmail.com',
+        'login' => '............@gmail.com',
         'passwd' => '...............',
     ],
     'o2' => [
         'server' => 'poczta.o2.pl',
         'encrypt' => 'SSL',
         'port' => 465,
-        'login' => 'address@o2.pl',
+        'login' => '............@o2.pl',
         'passwd' => '................',
     ]
 ];
