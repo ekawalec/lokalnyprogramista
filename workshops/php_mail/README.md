@@ -10,3 +10,7 @@ Pobieramy pakiety Composer'em:
 
 Konieczne jest posiadanie konta pocztowego w dowolnym miejscu i posiadanie parametrów niezbędnych do uzyskania połączenia ze skrzynką.
 W tym celu zmieł nazwę pliku **mail_cfg_sample.php** na **mail_cfg.php** a następnie edytuj go.
+
+Pliki wykonywalne:
+* index.php - główny formularz wysyłki
+* contact.php - zmodyfikowany formularz kontaktu z uwzględnieniem tematu i zależnego od niego adresata
