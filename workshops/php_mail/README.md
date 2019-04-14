@@ -8,5 +8,5 @@ Pobieramy pakiety Composer'em:
 * [Windows] `composer install`
 * [Linux] `php composer.phar install`
 
-Konieczne jest posiadanie konta pocztowego w dowolnym miejscu i posiadanie parametró niezbędnych do uzyskania połączenia ze skrzynką.
+Konieczne jest posiadanie konta pocztowego w dowolnym miejscu i posiadanie parametrów niezbędnych do uzyskania połączenia ze skrzynką.
 W tym celu zmieł nazwę pliku **mail_cfg_sample.php** na **mail_cfg.php** a następnie edytuj go.
