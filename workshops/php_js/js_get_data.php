@@ -1,13 +1,13 @@
 <?php
 $filename = date('Ymd').'.txt';
-$path = '../logs/';
+$path = '_logs/';
 
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>_hidden area</title>
+    <title>LokalnyProgramista #1 - ćwiczenia w JS</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
@@ -63,7 +63,7 @@ $path = '../logs/';
     $('#getLogPhp').click(function() {
         $.ajax({
             method: 'get',
-            url: '_log.php',
+            url: 'php_logs.php',
             success: function(response) {
                 //alert(response);
                 $('#log').text(response);
@@ -74,7 +74,7 @@ $path = '../logs/';
     $('#getJson').click(function() {
         $.ajax({
             method: 'get',
-            url: '../_ajax.php',
+            url: 'php_json_ajax.php',
             dataType: 'json',
             success: function(response) {
                 $('#log').html('<h2>pobranych rekordów: ' + response.length + '</h2>');
@@ -89,7 +89,7 @@ $path = '../logs/';
     $('#getPlainJson').click(function() {
         $.ajax({
             method: 'get',
-            url: './/data/1.json',
+            url: '_data/1.json',
             dataType: 'json',
             success: function(response) {
                 $('#log').html('<h2>pobranych rekordów: ' + response.length + '</h2>');
@@ -105,7 +105,7 @@ $path = '../logs/';
         $('#myHtml').html('');
         $.ajax({
             method: 'get',
-            url: '../data/1.html',
+            url: '_data/1.html',
             dataType: 'text',
             success: function(response) {
                 //alert(response);
@@ -117,7 +117,7 @@ $path = '../logs/';
     $(document).ready(function () {
         $.ajax({
             method: 'get',
-            url: '../data/1.html',
+            url: '_data/1.html',
             success: function(response) {
                 //alert(response);
                 $('#myHtml').html(response);

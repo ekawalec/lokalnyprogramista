@@ -1,5 +1,9 @@
 <?php
 
+if (!isset($_POST) || empty($_POST)) {
+    header('Location: index.php');
+    exit();
+}
 // uzupełnijmy dane - brakujące: created_at,
 $record = $_POST;
 $record['created_at'] = time(); // time() zwraca ilośc sekund od 1970-01-01 01:00:00

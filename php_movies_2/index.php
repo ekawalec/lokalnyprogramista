@@ -69,7 +69,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title><?= !empty($model) ? $model['title'].' - ' : '' ?>My favourite movies</title>
+    <title>LokalnyProgramista #1 - <?= !empty($model) ? $model['title'].' - ' : '' ?>My favourite movies</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
@@ -80,14 +80,18 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         <div class="container">
             <div class="row">
                 <div class="col-sm-8 col-md-7 py-4">
-                    <h4 class="text-white">About</h4>
-                    <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+                    <h4 class="text-white">O projekcie</h4>
+                    <p class="text-white">
+                        <strong>wersja rozbudowana</strong><br>
+                        użycie: <strong>PHP</strong>, <strong>MySQL</strong>, <strong>HTML</strong>, <strong>jQuery</strong>, <strong>Bootstrap</strong><br>
+                        możliwości: zapis logów wizyt w tle (folder logs), przeglądanie filmów, recenzji, komentarzy, komentowanie recenzji.
+                    </p>
                 </div>
                 <div class="col-sm-4 offset-md-1 py-4">
                     <h4 class="text-white">Contact</h4>
                     <ul class="list-unstyled">
                         <li><a href="https://www.facebook.com/edmund.kawalec" class="text-white">Like on Facebook</a></li>
-                        <li><a href="mailto:e.kawalec@s4studio.pl" class="text-white">Email me</a></li>
+                        <li><a href="mailto:e.kawalec@gmail.com" class="text-white">Email me</a></li>
                     </ul>
                 </div>
             </div>
@@ -206,16 +210,19 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
 
 
                         <?php else: ?>
-                            <?php foreach ($model['reviews'] as $review): ?>
-                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-4">
-                                    <h5><?= $review['title'] ?></h5>
-                                    <p><?= substr($review['content'], 0, 200) ?>...
-                                        <a href="<?= basename(__FILE__) ?>?id=<?= $model['id'] ?>&rev=<?=
-                                        $review['id'] ?>#reviews"
-                                           class="btn btn-sm btn-primary">Read more &raquo;  </a>
-                                    </p>
-                                </div>
-                            <?php endforeach; ?>
+                            <div class="row">
+                                <?php foreach ($model['reviews'] as $review): ?>
+                                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                        <h5><?= $review['title'] ?></h5>
+                                        <p><?= substr($review['content'], 0, 200) ?>...
+                                            <a href="<?= basename(__FILE__) ?>?id=<?= $model['id'] ?>&rev=<?=
+                                            $review['id'] ?>#reviews"
+                                               class="btn btn-sm btn-primary">Read more &raquo;  </a>
+                                        </p>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+
                         <?php endif; ?>
                         </div>
 
@@ -263,7 +270,7 @@ if (isset($_GET['id']) && is_numeric($_GET['id'])) {
         <p class="float-right">
             <a href="#">Back to top</a>
         </p>
-        <p>Movies album made in &copy; Bootstrap, using PHP & MySQL, created for <strong>LokalnyProgramista.pl</strong>!</p>
+        <p>Movies album made for <strong>LokalnyProgramista.pl</strong>!</p>
 
     </div>
 </footer>

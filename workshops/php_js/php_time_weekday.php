@@ -10,7 +10,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>LokalnyProgramista #1 - czas to ... PHP</title>
 </head>
 <body>
 <form action="">

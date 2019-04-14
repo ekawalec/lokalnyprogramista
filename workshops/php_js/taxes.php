@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Podatki, rzecz pewna jak śmierć</title>
+    <title>LokalnyProgramista #1 - Podatki, rzecz pewna jak śmierć</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.3.1.js" crossorigin="anonymous"></script>
 </head>
@@ -131,7 +131,7 @@ Przelicz podaną wartość PLN po uwzględnieniu kursu walut: USD, EUR, GBP.
                 echo '</ul>';
 
                 // zapisuję tablicę walut do pliku w formacie CSV
-                $fp = fopen('mid_currencies.csv', 'w');
+                $fp = fopen('_data/mid_currencies.csv', 'w');
                 foreach ($result as $rate) {
                     fputcsv($fp, array_values($rate), ';');
                 }
